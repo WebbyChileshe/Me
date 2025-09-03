@@ -1,0 +1,40 @@
+.contacts {
+  padding: 80px 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.contacts-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contacts-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.contacts-text {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contacts-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.contacts-list a {
+  color: #ffffff;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.contacts-list a:hover {
+  transform: scale(1.2);
+  color: #00b4d8;
+}
+

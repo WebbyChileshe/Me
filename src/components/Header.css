@@ -1,0 +1,170 @@
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Slightly taller for better touch targets */
+  padding: 0 2rem;
+  background-color: #0077b6;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px; /* Prevent content from stretching too wide */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  flex: 1;
+  font-size: 1.5rem;
+  font-weight: 700; /* Using numeric values for font weights */
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-decoration: none; /* In case logo is an <a> tag */
+}
+
+/* Navigation */
+.nav {
+  flex: 2;
+  display: flex;
+
+  gap: 2rem;
+}
+
+.nav__link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+  color: #03045E;
+  outline: none; /* Remove default focus outline but add alternative below */
+}
+
+/* Underline animation on hover */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #03045E;
+  transition: width 0.3s ease;
+}
+
+.nav__link:hover::after,
+.nav__link:focus::after {
+  width: 100%;
+}
+
+/* Focus styles for accessibility */
+.nav__link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* Mobile Menu Button */
+.menu-button {
+  display: none; /* Hidden by default on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: auto;
+}
+
+.menu-button__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 28px;
+}
+
+.menu-button__hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Active state for hamburger menu */
+.menu-button[aria-expanded="true"] .menu-button__hamburger span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-button[aria-expanded="true"] .menu-button__hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button[aria-expanded="true"] .menu-button__hamburger span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 0rem;
+    height: 60px;
+  }
+  .logo {
+    padding: 1rem; 
+  }
+
+  .nav {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #103c55;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+
+  .nav__link {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+
+  .nav__link::after {
+    display: none; /* Remove underline animation on mobile */
+  }
+
+  .menu-button {
+    display: block;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .nav__link::after,
+  .menu-button__hamburger span {
+    transition: none;
+  }
+}
